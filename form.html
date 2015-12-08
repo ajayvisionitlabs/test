@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>jQuery research: forms</title>
+        <script type='text/javascript' src='jquery-1.11.2.js'></script>
+        <script type='text/javascript' language='javascript'>
+
+            $(document).ready(function(){
+                $('form[name="testform"]').submit(function(event){ process_form_submission(event); });
+            });
+
+            function process_form_submission(event) {
+                event.preventDefault();
+                var target = $(event.target);
+                var me = event.currentTarget;
+                var data = me.data.value;
+                var which_button = '?';       // <-- this is what I want to know
+                alert( 'data: ' + data + ', button: ' + which_button );
+            }
+        </script>
+    </head>
+    <body>
+        <h2>Here's my form:</h2>
+        <form action='nothing' method='post' name='testform'>
+            <input type='hidden' name='data' value='blahdatayadda'/>
+            <input type='submit' name='name1' value='value1' />
+            <input type='submit' name='name2' value='Send' />
+        </form>
+    </body>
+</html>

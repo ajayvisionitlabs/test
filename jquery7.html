@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title></title>
+	<script src="jquery-1.11.2.js"></script>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('.myBox').click(function(){
+				if ($(this).find("a").attr("href") != null)
+					alert("not found");
+				else
+					alert("link found");
+			});
+		});
+	</script>
+</head>
+<body>
+	<div class="myBox">
+		myBox DIV
+		<br /><br /><br />
+		<a href="http://www.yahoo.com">Yahoo Inc.</a>
+	</div>
+</body>
+</html>

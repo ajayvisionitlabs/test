@@ -1,0 +1,50 @@
+<head>
+    <title></title>
+    <script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#btnHide').click(function() {
+                //$('td:nth-child(2)').hide();
+                // if your table has header(th), use this
+                $('td:nth-child(3),th:nth-child(3)').hide();
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.editbtn').click(function(){
+            $(this).html($(this).html() == 'Edit' ? 'Save' : 'Edit');
+
+            if('td[contenteditable=true]')) {
+                    'td[contenteditable=false]');
+            }
+            else if('td[contenteditable=false]')){
+                    'td[contenteditable=true]');
+            }
+            //else not editable row
+           }); //moved this
+        });
+    </script>
+
+</head>
+<body>
+  <table id="tableone" border="1">
+    <thead>
+        <tr><th class="col1">Header 1</th><th class="col2">Header 2</th><th class="col3">Header 3</th><th class="col3">Header 4</th></tr>
+    </thead>
+    <tr class="del">
+        <td contenteditable="false">Row 0 Column 0</td> //changed to false after experiment
+        <td><button class="editbtn" >Edit</button></td>
+        <td contenteditable="false">Row 0 Column 1</td>
+        <td contenteditable="false">Row 0 Column 2</td>
+    </tr>
+    <tr class="del">
+        <td contenteditable="false">Row 1 Column 0</td>
+        <td><button class="editbtn">Edit</button></td>
+        <td contenteditable="false">Row 1 Column 1</td>
+        <td contenteditable="false">Row 1 Column 2</td>
+    </tr>
+  </table>
+    <input id="btnHide" type="button" value="Hide Column 2"/>
+
+</body>

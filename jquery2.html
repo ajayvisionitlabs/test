@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title></title>
+	<script src="jquery-1.11.2.js"></script>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#div1').html("Height = " + $('#image1').height() + "<br />" + "Width = " + $('#image1').width())
+		});
+		$(document).ready(function(){
+			$('#button1').css("background-color", "Red");
+		});
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+	<img src="16069_10154526761750204_2178263968787238976_n.jpg" id="image1" />
+	<div id="div1"></div>
+	<input id="button1" type="button" value="Click Me" />
+</body>
+</html>

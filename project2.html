@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+	#tfheader{
+		background-color:#c3dfef;
+	}
+	#tfnewsearch{
+		float:right;
+		padding:20px;
+	}
+	.tftextinput{
+		margin: 0;
+		padding: 5px 15px;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size:14px;
+		border:1px solid #0076a3; 
+		border-right:0px;
+		border-top-left-radius: 5px 5px;
+		border-bottom-left-radius: 5px 5px;
+	}
+	.tfbutton{
+		margin: 0;
+		padding: 5px 15px;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size:14px;
+		outline: none;
+		cursor: pointer;
+		text-align: center;
+		text-decoration: none;
+		color: #ffffff;
+		border: solid 1px #0076a3; border-right:0px;
+		background: #0095cd;
+		background: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5));
+		background: -moz-linear-gradient(top,  #00adee,  #0078a5);
+		border-top-right-radius: 5px 5px;
+		border-bottom-right-radius: 5px 5px;
+	}
+	.tfbutton.hover{
+		text-decoration: none;
+		background: #007ead;
+		background: -webkit-gradient(linear, left top, left bottom, from(#0095cc), to(#00678e));
+		background: -moz-linear-gradient(top,  #0095cc,  #00678e);
+	}
+	/* Fixes submit button height problem in Firefox */
+	.tfbutton::-moz-focus-inner{
+	  border: 0;
+	}
+	.tfclear{
+		clear:both;
+	}
+	.box {
+	  border: 2px solid green ;
+	  background-color:#c3dfef;
+	  border-top-left-radius: 5px 5px;
+	  border-top-right-radius: 5px 5px;
+	  border-bottom-left-radius: 5px 5px;
+	  border-bottom-right-radius: 5px 5px;
+	  padding: 15px 15px;
+	  width: 100px;
+	  height:100px;
+	  margin: 5px;
+	  display: inline-block;
+	}
+</style>
+<script src="jquery-1.11.2.js"></script>
+	<script type="text/javascript">
+		$(window).load(function(){
+			console.log("entring into window load");
+			var UrlVisited = []; //dynamic array holding searchkeys
+			
+			/*
+			**	To print URLs in the boxes.
+			*/
+			function PrintUrl(){
+				var BoxNo = 0;
+				var BoxId = "";
+				for(i=0;i<UrlVisited.length;i++){
+					BoxNo = i + 1;
+					BoxId = "tfbox" + BoxNo;
+					console.log(BoxId);
+					console.log(UrlVisited[i]);
+					//$('#BoxId').text(UrlVisited[i]);
+					document.getElementById("tfbox" + BoxNo).innerHTML = UrlVisited[i];
+				}
+			}
+			
+			/*
+			**	To search in the array of URL visited
+			*/
+			function searchfn(){
+				console.log("logging searchfn entry");
+				//var SearchString = $('.tftextinput').value;
+				var SearchString = document.getElementsByClassName('tftextinput')[0].value;
+				if(UrlVisited.indexOf(SearchString) == -1){
+						UrlVisited.push(SearchString);
+				}
+				else{
+					alert("URL already exists in the list");
+				}
+				PrintUrl();
+				return false;
+			}
+			
+			window.PrintUrl=PrintUrl;
+			window.searchfn = searchfn;
+		});		
+	</script>
+</head>
+<body>
+	<div id="tfheader">
+			<form id="tfnewsearch" method="get">
+					<input type="text" class="tftextinput" name="q" size="20" maxlength="120">
+					<input type="button" value="search" class="tfbutton" onClick = "searchfn()">
+			</form>
+		<div class="tfclear"></div>
+	</div>
+
+	<div>
+		<div class="box" id="tfbox1"></div>
+		<div class="box" id="tfbox2"></div>
+		<div class="box" id ="tfbox3"></div>
+	</div>
+	
+	<div>
+		<div class="box" id="tfbox4"></div>
+		<div class="box" id="tfbox5"></div>
+		<div class="box" id="tfbox6"></div>
+	</div>
+	
+	<div>
+		<div class="box" id="tfbox7"></div>
+		<div class="box" id="tfbox8"></div>
+		<div class="box" id="tfbox9"></div>
+	</div>
+</body>
+</html>
